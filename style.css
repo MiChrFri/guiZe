@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#inputArea {
+	resize: none;
+	padding: 5px 10px;
+	width: 80%;
+	height: 40em;
+	margin: 0 10%;
+	font-family: 'Source Code Pro', monospace;
+}

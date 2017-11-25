@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  	<meta charset="utf-8">
+  	<title>guiZe</title>
+  	<meta name="author" content="Michael Christian Frick">
+
+  	<link rel="stylesheet" href="dependencies/highlight/styles/monokai-sublime.css">
+	<script type ="text/javascript" src="dependencies/highlight/highlight.pack.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="style.css">
+
+	<script>
+		function reload() {
+			console.log("reload");
+			
+			$('pre code').each(function(i, block) {
+    			hljs.highlightBlock(block);
+  			});
+		};		
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="ConverterController.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+
+
+</head>
+
+<body ng-app="app">
+
+	<div id="ctrl" ng-controller="ConverterController">
+		<div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>
+
+     	<div ng-bind-html="tags"></div> 
+     			
+     	<form ng-submit="submitText()">
+			<textarea id="inputArea" class="inputfield" ng-model="input" ng-change="convertMarkdown()" ng-model-options="{debounce: 750}"" ng-trim="false">
+				hi<!-- ```swift\nprint("hello world");\nalert(s);``` -->
+			</textarea>
+     	</form>
+
+	</div>
+
+
+</body>
+
+</html>
+
+
+

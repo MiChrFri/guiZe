@@ -1,0 +1,16 @@
+<!---
+Code
+-->
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+
+
+//
+
+<pre><code class="javascript">
+var s = "JavaScript syntax highlighting";
+alert(s);
+</code></pre>
