@@ -9,37 +9,45 @@
   	<link rel="stylesheet" href="dependencies/highlight/styles/monokai-sublime.css">
 	<script type ="text/javascript" src="dependencies/highlight/highlight.pack.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/showdownjs/showdown/1.8.2/dist/showdown.min.js"></script>
 
 	<link rel="stylesheet" href="style.css">
 
 	<script>
 		function reload() {
-			console.log("reload");
-			
 			$('pre code').each(function(i, block) {
     			hljs.highlightBlock(block);
   			});
 		};		
+
+		function convert(markdownString) {
+			var doc = markdownString
+			var converter = new showdown.Converter();
+    		var html = converter.makeHtml(doc);
+
+    		return html
+		}
 	</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script type="text/javascript" src="ConverterController.js"></script>
+	<script src="dependencies/angularjs/1.6.6/angular.min.js"></script>
+	<script src='dependencies/angularjs/1.6.6/angular-loader.js'></script>
+    <script src='dependencies/angularjs/1.6.6/angular-scenario.js'></script>
+    <script src='dependencies/angularjs/1.6.6/angular-mocks.js'></script>
+
+	<script type="text/javascript" src="converterController.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-
-
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 
-<body ng-app="app">
+<body ng-app="myModule">
 
-	<div id="ctrl" ng-controller="ConverterController">
+	<div id="ctrl" ng-controller="converterController">
 		<div ng-bind-html="thisCanBeusedInsideNgBindHtml"></div>
 
      	<div ng-bind-html="tags"></div> 
      			
      	<form ng-submit="submitText()">
-			<textarea id="inputArea" class="inputfield" ng-model="input" ng-change="convertMarkdown()" ng-model-options="{debounce: 750}"" ng-trim="false">
-				hi<!-- ```swift\nprint("hello world");\nalert(s);``` -->
-			</textarea>
+			<textarea id="inputArea" class="inputfield" ng-model="input" ng-change="convertMarkdown()" ng-model-options="{debounce: 750}"" ng-trim="false"></textarea>
      	</form>
 
 	</div>
