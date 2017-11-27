@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+body {
+	padding: 0 1em;
+}
+
 #inputArea {
 	resize: none;
 	padding: 5px 10px;
@@ -10,4 +14,22 @@
 	height: 40em;
 	margin: 0 10%;
 	font-family: 'Source Code Pro', monospace;
+}
+
+ul {
+	list-style-type: inherit;
+	margin-left: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+  color: #5b5b5b;
+  text-align: center;
+}
+
+code {
+	width: 20em;
+	margin: 0 auto;
+	font-size: 21px;
+	border: solid 1px #9ef93b;
 }
